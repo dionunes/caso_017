@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ARQUIVO 017 — ACESSO RESTRITO</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #d6d6d6;
+            font-family: "Courier New", monospace;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 620px;
+            background: #151515;
+            border: 1px solid #3d3d3d;
+            padding: 35px;
+            box-shadow: 0 0 30px rgba(0,0,0,.6);
+        }
+
+        .header {
+            border-bottom: 1px solid #3d3d3d;
+            padding-bottom: 22px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 5px;
+            font-weight: normal;
+        }
+
+        .classification {
+            margin-top: 8px;
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .record {
+            margin: 35px 0;
+            padding: 20px;
+            border-left: 2px solid #555;
+            background: #111;
+        }
+
+        .record-title {
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .instructions {
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            background: #090909;
+            border: 1px solid #555;
+            color: #eee;
+            padding: 15px;
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        input:focus {
+            border-color: #999;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            background: transparent;
+            color: #ccc;
+            border: 1px solid #666;
+            font-family: "Courier New", monospace;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #242424;
+        }
+
+        #result {
+            margin-top: 25px;
+            min-height: 30px;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .denied {
+            color: #a76f6f;
+        }
+
+        .success {
+            color: #8ca58c;
+        }
+
+        .download {
+            display: none;
+            margin-top: 25px;
+            border: 1px solid #555;
+            padding: 25px;
+            background: #101010;
+        }
+
+        .download a {
+            display: block;
+            margin-top: 20px;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #777;
+            color: #ddd;
+            letter-spacing: 2px;
+        }
+
+        .download a:hover {
+            background: #252525;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #555;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .cursor::after {
+            content: "_";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>ARQUIVO 017</h1>
+
+        <div class="classification">
+            SISTEMA DE INVESTIGAÇÃO — ACESSO RESTRITO
+        </div>
+    </div>
+
+    <div class="record">
+        <div class="record-title">
+            EVIDÊNCIA 006
+        </div>
+
+        <div class="status">
+            STATUS: BLOQUEADA
+        </div>
+    </div>
+
+    <div class="instructions">
+
+        <p>
+            O registro anterior contém a chave necessária
+            para prosseguir.
+        </p>
+
+        <p>
+            A resposta encontrada não é apenas uma resposta.
+        </p>
+
+        <p>
+            <strong>É também uma chave.</strong>
+        </p>
+
+        <p>
+            Identifique aquilo que estava tocando.
+        </p>
+
+    </div>
+
+    <form id="accessForm">
+
+        <label for="password">
+            CHAVE DE ACESSO
+        </label>
+
+        <input
+            type="text"
+            id="password"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            placeholder="INSIRA A CHAVE"
+        >
+
+        <button type="submit">
+            AUTENTICAR
+        </button>
+
+    </form>
+
+    <div id="result"></div>
+
+    <div id="downloadArea" class="download">
+
+        <div class="success">
+            CHAVE RECONHECIDA.<br><br>
+
+            Registro anterior validado.<br>
+            Autorização concedida.<br><br>
+
+            EVIDÊNCIA 006 DISPONÍVEL.
+        </div>
+
+        <a href="../EVIDENCIA_006.zip" download>
+            BAIXAR EVIDÊNCIA 006
+        </a>
+
+    </div>
+
+    <div class="footer">
+        ARQUIVO 017 // REGISTRO DE ACESSO
+    </div>
+
+</div>
+
+
+<script>
+
+const form = document.getElementById("accessForm");
+const input = document.getElementById("password");
+const result = document.getElementById("result");
+const downloadArea = document.getElementById("downloadArea");
+
+const expectedHash =
+    "9c48f843cb55facf2cf310a328cf9bfee83a31992cad71a2bd40918e2a863c3e";
+
+
+function normalizeKey(value) {
+
+    return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^A-Za-z0-9]/g, "")
+        .toUpperCase();
+
+}
+
+
+async function sha256(text) {
+
+    const data =
+        new TextEncoder().encode(text);
+
+    const digest =
+        await crypto.subtle.digest("SHA-256", data);
+
+    return Array
+        .from(new Uint8Array(digest))
+        .map(byte =>
+            byte.toString(16).padStart(2, "0")
+        )
+        .join("");
+
+}
+
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    result.className = "";
+    result.innerHTML =
+        '<span class="cursor">VERIFICANDO CHAVE</span>';
+
+    downloadArea.style.display = "none";
+
+    const normalized =
+        normalizeKey(input.value);
+
+    const hash =
+        await sha256(normalized);
+
+    setTimeout(function() {
+
+        if (hash === expectedHash) {
+
+            result.innerHTML = "";
+            downloadArea.style.display = "block";
+
+            input.disabled = true;
+
+            form.querySelector("button").disabled = true;
+
+        } else {
+
+            result.className = "denied";
+
+            result.innerHTML =
+                "ACESSO NEGADO.<br>" +
+                "A chave fornecida não corresponde ao registro.";
+
+            input.value = "";
+            input.focus();
+
+        }
+
+    }, 700);
+
+});
+
+</script>
+
+</body>
+</html>
