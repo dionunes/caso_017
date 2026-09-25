@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo 017 — Protocolo de Escolha</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111;
+    color: #d6d6d6;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    background: #151515;
+    border: 1px solid #3a3a3a;
+    padding: 32px 26px;
+    box-shadow: 0 0 30px rgba(0,0,0,.45);
+}
+
+.top {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    margin: 0 0 5px;
+    color: #eee;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.warning {
+    background: #191919;
+    border-left: 3px solid #777;
+    padding: 15px;
+    margin: 25px 0;
+}
+
+.options {
+    margin-top: 30px;
+}
+
+.option {
+    width: 100%;
+    padding: 18px;
+    margin: 12px 0;
+    background: #1d1d1d;
+    border: 1px solid #444;
+    color: #ddd;
+    font-family: "Courier New", monospace;
+    text-align: left;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.option:hover {
+    background: #292929;
+    border-color: #666;
+}
+
+.option strong {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.option span {
+    font-size: 12px;
+    color: #888;
+}
+
+#response {
+    display: none;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    padding-top: 25px;
+}
+
+.result {
+    padding: 18px;
+    background: #101010;
+    border: 1px solid #444;
+}
+
+.result-title {
+    letter-spacing: 2px;
+    color: #eee;
+    margin-bottom: 18px;
+}
+
+.return {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    background: #222;
+    border: 1px solid #444;
+    color: #ccc;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+#compatible {
+    display: none;
+}
+
+.transition {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #333;
+    line-height: 1.9;
+}
+
+.major {
+    font-size: 18px;
+    color: #eee;
+    margin: 28px 0;
+}
+
+.continue-box {
+    margin-top: 32px;
+    padding: 22px;
+    border: 1px solid #444;
+    background: #101010;
+}
+
+.continue-button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px;
+    background: #252525;
+    border: 1px solid #666;
+    color: #eee;
+    font-family: "Courier New", monospace;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.continue-button:hover {
+    background: #303030;
+}
+
+.exit-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px;
+    background: transparent;
+    border: 1px solid #333;
+    color: #777;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+#registered {
+    display: none;
+    margin-top: 30px;
+    padding: 22px;
+    border: 1px solid #555;
+    background: #0e0e0e;
+}
+
+.download {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    background: #252525;
+    border: 1px solid #666;
+    color: #eee;
+    letter-spacing: 2px;
+}
+
+.small {
+    margin-top: 30px;
+    color: #666;
+    font-size: 11px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top">ARQUIVO 017</div>
+
+    <h1>PROTOCOLO DE ESCOLHA</h1>
+
+    <div class="subtitle">
+        ANÁLISE DO INVESTIGADOR
+    </div>
+
+    <p>
+        O Registro 010 apresentou três explicações possíveis
+        para as interações posteriores ao encerramento da rotina.
+    </p>
+
+    <div class="warning">
+        Apenas uma hipótese é compatível com o conjunto
+        completo de evidências.
+        <br><br>
+        Selecione a explicação que melhor sobrevive aos registros disponíveis.
+    </div>
+
+    <div class="options" id="options">
+
+        <button class="option" onclick="choose('A')">
+            <strong>ARQUIVO A — OBRIGAÇÃO</strong>
+            <span>As circunstâncias exigiram a continuidade das interações.</span>
+        </button>
+
+        <button class="option" onclick="choose('B')">
+            <strong>ARQUIVO B — COINCIDÊNCIA</strong>
+            <span>Os acontecimentos posteriores ocorreram sem intenção.</span>
+        </button>
+
+        <button class="option" onclick="choose('C')">
+            <strong>ARQUIVO C — ESCOLHA</strong>
+            <span>As novas circunstâncias foram resultado de decisões.</span>
+        </button>
+
+    </div>
+
+    <div id="response"></div>
+
+    <div id="compatible">
+
+        <div class="result">
+            <div class="result-title">
+                HIPÓTESE COMPATÍVEL
+            </div>
+
+            As circunstâncias posteriores não eram obrigatórias.
+            <br><br>
+            Em pelo menos uma delas, a iniciativa partiu do investigador.
+            <br><br>
+            Existe evidência de escolha deliberada.
+        </div>
+
+        <div class="transition">
+
+            Entretanto:
+
+            <div class="major">
+                UMA ESCOLHA AINDA NÃO EXPLICA SUA MOTIVAÇÃO.
+            </div>
+
+            Até este momento, todas as decisões relevantes
+            pertenciam ao investigador.
+            <br><br>
+
+            Ele decidiu continuar o contato.
+            <br>
+            Decidiu criar uma nova oportunidade de encontro.
+            <br>
+            Decidiu prolongar determinados momentos.
+            <br>
+            Decidiu participar de outros.
+            <br><br>
+
+            E decidiu abrir o Caso 017.
+
+            <div class="major">
+                A PRÓXIMA ESCOLHA NÃO PERTENCE A ELE.
+                <br><br>
+                PERTENCE AO ALVO.
+            </div>
+
+        </div>
+
+        <div class="continue-box">
+
+            <p>
+                A identidade provável já foi estabelecida.
+            </p>
+
+            <p>
+                Os próximos registros não investigarão mais
+                quem é o alvo.
+            </p>
+
+            <p>
+                A partir deste ponto, a investigação seguirá
+                para informações relacionadas à motivação
+                do investigador.
+            </p>
+
+            <p>
+                Você deseja continuar?
+            </p>
+
+            <button class="continue-button" onclick="continueCase()">
+                CONTINUAR INVESTIGAÇÃO
+            </button>
+
+            <button class="exit-button" onclick="leaveCase()">
+                ENCERRAR POR AGORA
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="registered">
+
+        <div class="result-title">
+            DECISÃO REGISTRADA
+        </div>
+
+        A continuidade do Caso 017 não depende mais
+        exclusivamente do investigador.
+
+        <br><br>
+
+        <strong>
+            O alvo decidiu continuar.
+        </strong>
+
+        <br><br>
+
+        Autorização concedida para o próximo registro.
+
+        <a class="download" href="../EVIDENCIA_011.zip">
+            ACESSAR EVIDÊNCIA 011
+        </a>
+
+    </div>
+
+    <div class="small">
+        CASO 017 // PROTOCOLO DE ESCOLHA
+    </div>
+
+</div>
+
+<script>
+
+function choose(option) {
+
+    const options = document.getElementById("options");
+    const response = document.getElementById("response");
+    const compatible = document.getElementById("compatible");
+
+    response.style.display = "none";
+    compatible.style.display = "none";
+
+    if (option === "A") {
+
+        response.innerHTML = `
+            <div class="result">
+                <div class="result-title">
+                    HIPÓTESE INCOMPATÍVEL
+                </div>
+
+                A circunstância obrigatória terminou antes
+                dos acontecimentos analisados.
+
+                <br><br>
+
+                Esta explicação não é suficiente.
+
+                <button class="return" onclick="resetChoice()">
+                    REVISAR HIPÓTESE
+                </button>
+            </div>
+        `;
+
+        options.style.display = "none";
+        response.style.display = "block";
+    }
+
+    else if (option === "B") {
+
+        response.innerHTML = `
+            <div class="result">
+                <div class="result-title">
+                    HIPÓTESE INSUFICIENTE
+                </div>
+
+                Uma ocorrência isolada poderia ser coincidência.
+
+                <br><br>
+
+                A repetição reduz essa explicação.
+
+                <br><br>
+
+                Esta hipótese não explica todos os registros.
+
+                <button class="return" onclick="resetChoice()">
+                    REVISAR HIPÓTESE
+                </button>
+            </div>
+        `;
+
+        options.style.display = "none";
+        response.style.display = "block";
+    }
+
+    else if (option === "C") {
+
+        options.style.display = "none";
+        compatible.style.display = "block";
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
+    }
+}
+
+function resetChoice() {
+
+    document.getElementById("response").style.display = "none";
+    document.getElementById("options").style.display = "block";
+
+}
+
+function continueCase() {
+
+    document.getElementById("compatible").style.display = "none";
+    document.getElementById("registered").style.display = "block";
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+
+}
+
+function leaveCase() {
+
+    document.querySelector(".continue-box").innerHTML = `
+        <div class="result-title">
+            INVESTIGAÇÃO SUSPENSA
+        </div>
+
+        Nenhuma conclusão foi alterada.
+
+        <br><br>
+
+        O Caso 017 permanecerá aberto.
+
+        <br><br>
+
+        Quando quiser continuar, retorne a este protocolo.
+
+        <button class="return" onclick="location.reload()">
+            RETORNAR AO PROTOCOLO
+        </button>
+    `;
+}
+
+</script>
+
+</body>
+</html>
