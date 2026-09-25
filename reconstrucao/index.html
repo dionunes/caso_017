@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo 017 — Reconstrução</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111;
+    color: #d6d6d6;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background: #151515;
+    border: 1px solid #3a3a3a;
+    padding: 32px 25px;
+}
+
+.label {
+    color: #777;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    color: #eee;
+    letter-spacing: 3px;
+    font-size: 24px;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    background: #0d0d0d;
+    border: 1px solid #444;
+    color: #eee;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    background: #252525;
+    border: 1px solid #555;
+    color: #eee;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+#result {
+    display: none;
+    margin-top: 30px;
+}
+
+.box {
+    border: 1px solid #444;
+    background: #101010;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+.big {
+    margin: 28px 0;
+    color: #eee;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.next {
+    display: none;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    padding-top: 25px;
+}
+
+.download {
+    display: block;
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    background: #252525;
+    border: 1px solid #666;
+    color: #eee;
+    letter-spacing: 2px;
+}
+
+.small {
+    margin-top: 30px;
+    color: #666;
+    font-size: 11px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="label">ARQUIVO 017</div>
+
+    <h1>RECONSTRUÇÃO</h1>
+
+    <p>
+        Um dado foi removido do Registro 011.
+    </p>
+
+    <p>
+        Informe a decisão tomada pelo investigador.
+    </p>
+
+    <input
+        id="answer"
+        type="text"
+        placeholder="DECISÃO DO INVESTIGADOR"
+        autocomplete="off"
+    >
+
+    <button onclick="checkAnswer()">
+        VERIFICAR REGISTRO
+    </button>
+
+    <div id="result"></div>
+
+    <div id="next" class="next">
+
+        <div class="box">
+
+            <strong>DECISÃO CONFIRMADA</strong>
+
+            <br><br>
+
+            O registro foi reconstruído.
+
+            <br><br>
+
+            O investigador possuía liberdade de escolha.
+
+            <br>
+            A escolha realizada foi:
+
+            <div class="big">
+                ATÉ QUE ENFIM
+            </div>
+
+            O fato de uma escolha ter sido feita é comprovável.
+
+            <br><br>
+
+            Sua motivação não é.
+
+        </div>
+
+        <div class="big">
+            INICIANDO ANÁLISE DE INTENÇÃO...
+        </div>
+
+        <div class="box">
+
+            Considere três hipóteses:
+
+            <br><br>
+
+            <strong>A — ALEATÓRIA</strong><br>
+            A escolha não possuía significado particular.
+
+            <br><br>
+
+            <strong>B — CONTEXTUAL</strong><br>
+            A escolha foi feita apenas porque combinava com a publicação.
+
+            <br><br>
+
+            <strong>C — INTENCIONAL</strong><br>
+            A escolha possuía um significado relacionado ao alvo.
+
+            <br><br>
+
+            Qual delas pode ser comprovada exclusivamente
+            pelos registros disponíveis?
+
+        </div>
+
+        <div class="big">
+            NENHUMA.
+        </div>
+
+        <div class="box">
+
+            Nenhum registro demonstra por que o investigador
+            escolheu aquela música.
+
+            <br><br>
+
+            A alternativa C pode parecer compatível com a hipótese atual.
+
+            <br><br>
+
+            Parecer compatível não é o mesmo que estar comprovada.
+
+            <br><br>
+
+            A investigação não utilizará uma interpretação
+            como se fosse uma declaração.
+
+        </div>
+
+        <div class="big">
+            A INTENÇÃO CONTINUA SEM PROVA DIRETA.
+        </div>
+
+        <div class="box">
+
+            Após onze evidências, existe apenas uma fonte
+            capaz de fornecer a informação que falta.
+
+            <br><br>
+
+            Essa fonte esteve presente desde o início do caso.
+
+            <br><br>
+
+            <strong>O INVESTIGADOR.</strong>
+        </div>
+
+        <a class="download" href="../EVIDENCIA_012.zip">
+            ACESSAR REGISTRO FINAL
+        </a>
+
+    </div>
+
+    <div class="small">
+        CASO 017 // RECONSTRUÇÃO DE REGISTRO
+    </div>
+
+</div>
+
+<script>
+
+function normalize(text) {
+    return text
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "");
+}
+
+function checkAnswer() {
+
+    const value = normalize(
+        document.getElementById("answer").value
+    );
+
+    const result = document.getElementById("result");
+    const next = document.getElementById("next");
+
+    /*
+       Aceita:
+       ATE QUE ENFIM
+       ATÉ QUE ENFIM
+       ATE QUE ENFIM FERRUGEM
+       ATÉ QUE ENFIM - FERRUGEM
+    */
+
+    if (
+        value === "ATEQUEENFIM" ||
+        value === "ATEQUEENFIMFERRUGEM"
+    ) {
+
+        result.style.display = "block";
+
+        result.innerHTML = `
+            <div class="box">
+                REGISTRO LOCALIZADO.<br><br>
+                Correspondência confirmada.
+            </div>
+        `;
+
+        setTimeout(() => {
+            next.style.display = "block";
+
+            next.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }, 1200);
+
+    } else {
+
+        result.style.display = "block";
+
+        result.innerHTML = `
+            <div class="box">
+                NENHUMA CORRESPONDÊNCIA.<br><br>
+                Não procure uma escolha possível.<br>
+                Recupere a escolha que realmente aconteceu.
+            </div>
+        `;
+    }
+}
+
+document
+    .getElementById("answer")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
