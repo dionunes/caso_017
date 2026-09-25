@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo 017 — Verificação</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #111;
+        color: #d6d6d6;
+        font-family: "Courier New", monospace;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 680px;
+        border: 1px solid #3a3a3a;
+        background: #151515;
+        padding: 32px 26px;
+        box-shadow: 0 0 30px rgba(0,0,0,.45);
+    }
+
+    .top {
+        color: #888;
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+    }
+
+    h1 {
+        font-size: 25px;
+        letter-spacing: 3px;
+        margin: 0 0 5px;
+        color: #eee;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        color: #777;
+        letter-spacing: 1px;
+        margin-bottom: 35px;
+    }
+
+    .status {
+        border-left: 3px solid #777;
+        padding: 12px 15px;
+        margin-bottom: 28px;
+        background: #191919;
+    }
+
+    .status strong {
+        display: block;
+        color: #bbb;
+        margin-top: 5px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .instruction {
+        margin: 25px 0;
+    }
+
+    input {
+        width: 100%;
+        background: #0d0d0d;
+        border: 1px solid #444;
+        color: #eee;
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        font-size: 18px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #777;
+    }
+
+    button, .download {
+        width: 100%;
+        margin-top: 12px;
+        padding: 14px;
+        background: #242424;
+        border: 1px solid #555;
+        color: #ddd;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+    button:hover, .download:hover {
+        background: #303030;
+    }
+
+    #error {
+        display: none;
+        margin-top: 18px;
+        font-size: 12px;
+        color: #999;
+        text-align: center;
+    }
+
+    #analysis {
+        display: none;
+        margin-top: 32px;
+        border-top: 1px solid #333;
+        padding-top: 25px;
+    }
+
+    #checking {
+        letter-spacing: 2px;
+        color: #aaa;
+    }
+
+    #results {
+        display: none;
+    }
+
+    .result-line {
+        padding: 10px 0;
+        border-bottom: 1px solid #292929;
+        font-size: 13px;
+    }
+
+    .result-line span {
+        float: right;
+    }
+
+    #finalResult {
+        display: none;
+        margin-top: 32px;
+        padding: 22px;
+        border: 1px solid #444;
+        background: #101010;
+    }
+
+    #finalResult h2 {
+        font-size: 15px;
+        letter-spacing: 2px;
+        margin-top: 0;
+        color: #aaa;
+    }
+
+    .survived {
+        font-size: 20px;
+        color: #eee;
+        letter-spacing: 2px;
+        margin: 22px 0;
+    }
+
+    .important {
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid #333;
+        line-height: 1.9;
+    }
+
+    #evidence {
+        display: none;
+        margin-top: 28px;
+    }
+
+    .small {
+        font-size: 11px;
+        color: #666;
+        margin-top: 28px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top">ARQUIVO 017</div>
+
+    <h1>PROTOCOLO DE REFUTAÇÃO</h1>
+
+    <div class="subtitle">
+        SISTEMA DE INVESTIGAÇÃO — VERIFICAÇÃO DE HIPÓTESE
+    </div>
+
+    <div class="status">
+        RESULTADO PRELIMINAR
+        <strong>INCONSISTÊNCIA DETECTADA</strong>
+    </div>
+
+    <p>
+        Os registros 009-A e 009-B foram disponibilizados para análise.
+    </p>
+
+    <p class="instruction">
+        Informe abaixo apenas as letras correspondentes às afirmações
+        que permanecem comprovadas após o teste de refutação.
+    </p>
+
+    <input
+        type="text"
+        id="answer"
+        maxlength="4"
+        autocomplete="off"
+        placeholder="--"
+    >
+
+    <button onclick="verify()">SUBMETER RESULTADO</button>
+
+    <div id="error">
+        RESULTADO INCOMPATÍVEL.<br><br>
+        Revise os registros 009-A e 009-B.<br>
+        Não considere inferências como declarações.
+    </div>
+
+    <div id="analysis">
+
+        <div id="checking">
+            ANALISANDO HIPÓTESE...
+        </div>
+
+        <div id="results">
+
+            <div class="result-line">
+                A — IDENTIDADE PROVÁVEL
+                <span>MANTIDA</span>
+            </div>
+
+            <div class="result-line">
+                B — DECLARAÇÃO DO INVESTIGADOR
+                <span>NÃO COMPROVADA</span>
+            </div>
+
+            <div class="result-line">
+                C — CONVERGÊNCIA DAS EVIDÊNCIAS
+                <span>MANTIDA</span>
+            </div>
+
+            <div class="result-line">
+                D — EQUIVALÊNCIA COM A PERGUNTA ORIGINAL
+                <span>NÃO COMPROVADA</span>
+            </div>
+
+        </div>
+
+        <div id="finalResult">
+
+            <h2>RESULTADO DA REFUTAÇÃO</h2>
+
+            <p>
+                Nenhuma evidência incompatível com a identidade provável
+                foi encontrada.
+            </p>
+
+            <div class="survived">
+                A HIPÓTESE SOBREVIVEU.
+            </div>
+
+            <p>
+                A tentativa de refutação não eliminou a identidade considerada.
+            </p>
+
+            <div class="important">
+                O alvo pode ter sido identificado.<br><br>
+
+                <strong>
+                    A intenção do investigador, não.
+                </strong>
+            </div>
+
+        </div>
+
+        <div id="evidence">
+
+            <div class="status">
+                NOVO REGISTRO
+                <strong>EVIDÊNCIA 010 DISPONÍVEL</strong>
+            </div>
+
+            <a class="download" href="../EVIDENCIA_010.zip">
+                ACESSAR EVIDÊNCIA 010
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="small">
+        CASO 017 // PROTOCOLO DE VERIFICAÇÃO
+    </div>
+
+</div>
+
+<script>
+
+function normalize(value) {
+    return value
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "");
+}
+
+function verify() {
+
+    const input = document.getElementById("answer");
+    const error = document.getElementById("error");
+    const analysis = document.getElementById("analysis");
+    const checking = document.getElementById("checking");
+    const results = document.getElementById("results");
+    const finalResult = document.getElementById("finalResult");
+    const evidence = document.getElementById("evidence");
+
+    const answer = normalize(input.value);
+
+    error.style.display = "none";
+
+    if (answer !== "AC") {
+        error.style.display = "block";
+        return;
+    }
+
+    input.disabled = true;
+
+    document.querySelector("button").disabled = true;
+
+    analysis.style.display = "block";
+    checking.style.display = "block";
+
+    setTimeout(() => {
+
+        checking.innerHTML = "VERIFICANDO REGISTROS 001–009...";
+
+    }, 900);
+
+    setTimeout(() => {
+
+        checking.innerHTML = "COMPARANDO HIPÓTESES...";
+
+    }, 1800);
+
+    setTimeout(() => {
+
+        checking.style.display = "none";
+        results.style.display = "block";
+
+    }, 2800);
+
+    setTimeout(() => {
+
+        finalResult.style.display = "block";
+
+    }, 4300);
+
+    setTimeout(() => {
+
+        evidence.style.display = "block";
+
+    }, 6000);
+}
+
+document.getElementById("answer").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        verify();
+    }
+});
+
+</script>
+
+</body>
+</html>
